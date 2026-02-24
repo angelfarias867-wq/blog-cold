@@ -84,6 +84,9 @@ body {
     letter-spacing: 8px;
 }
 
+#spans {
+    color:#ffffff 
+}
 /* GRID DE INTEGRANTES */
 .seccion-banda { padding: 100px 10%; }
 
