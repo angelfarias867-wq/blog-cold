@@ -55,19 +55,46 @@ body {
     color: var(--rosa);
 }
 
-/* HERO */
+/* Hero con fondo full-page (solo en esta sección) */
 .hero {
-    height: 80vh;
+    position: relative;              /* Necesario para posicionar la capa de fondo */
+    height: 100vh;                   /* Ocupa toda la altura de la ventana */
+    min-height: 700px;               /* Evita que se haga muy pequeño en móviles */
+    width: 100vw;                    /* Ancho completo de la ventana */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle, #1a013d 0%, #05010a 70%);
     text-align: center;
+    background: radial-gradient(circle at center, rgba(26, 1, 61, 0.7) 0%, rgba(5, 1, 10, 0.95) 70%);
 }
 
+/* Capa de imagen de fondo (full-page) */
+.hero-background {
+    position: absolute;
+    inset: 0;                        /* Cubre todo el header: top, right, bottom, left = 0 */
+    background-image: url('img/Coldplay.jpg');  /* ← CAMBIA ESTA RUTA por tu imagen */
+    background-size: cover;          /* Cubre todo sin distorsionar */
+    background-position: center;     /* Centrado */
+    background-repeat: no-repeat;
+    z-index: -1;                     /* Detrás del texto */
+    filter: brightness(0.5) contrast(1.1) saturate(1.2); /* Ajusta para que el texto sea legible */
+}
+
+/* El contenido (texto) queda por encima */
+.hero-content {
+    position: relative;
+    z-index: 2;                      /* Por encima de la imagen */
+}
+
+/* Ajusta el tamaño del título para que destaque en full-screen */
 .hero h1 {
-    font-size: 4rem;
-    letter-spacing: 15px;
+    font-size: 8rem;                 /* Grande para full-page */
+    letter-spacing: 20px;
+    margin: 0;
+    line-height: 1.1;
 }
 
 .text-gradient {
@@ -87,6 +114,7 @@ body {
 #spans {
     color:#ffffff 
 }
+
 /* GRID DE INTEGRANTES */
 .seccion-banda { padding: 100px 10%; }
 
@@ -128,19 +156,319 @@ body {
     margin-bottom: 60px;
 }
 
-.row-album {
-    display: flex;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 30px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+/* GRID DE CANCIONES - ajustado para imágenes más grandes y cuadradas */
+.grid-albums {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 0 5%;
+    margin: 40px 0;
 }
 
-.album-img { flex: 1; min-height: 400px; background-size: cover; background-position: center; }
+.tarjeta-album {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;          /* o 24px si quieres más redondeado */
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    
+    /* ← Esto crea espacio alrededor de todo el contenido */
+    padding: 12px;
+    box-sizing: border-box;
+}
 
-.album-text { flex: 1; padding: 60px; }
+.tarjeta-album:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+}
 
-.tag { color: var(--rosa); font-weight: bold; font-size: 0.8rem; text-transform: uppercase; }
+.foto-album {
+    width: 100%;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.tarjeta-album h3 {
+    font-size: 1.3rem;
+    margin: 15px 10px 5px;
+    color: var(--texto);
+}
+
+.tarjeta-album p {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin: 0 0 15px;
+    color: var(--cian);
+}
+
+.foto-album {
+    width: 180px;
+    height: 180px;
+    border-radius: 16px;
+    margin: 0 auto 20px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* ESTILOS PARA LA EXPANSIÓN */
+.tarjeta-album {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 350px; /* Altura cerrada */
+}
+
+/* Cuando la tarjeta tiene la clase 'active' */
+.tarjeta-album.active {
+    max-height: 600px; /* Se expande verticalmente */
+    transform: scale(1.02);
+    cursor: default;
+}
+
+.expand-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    padding: 0 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0);
+}
+
+.tarjeta-album.active .expand-content {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cancion-famosa {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.cancion-famosa span {
+    color: var(--cian);
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.boton-reproducir {
+    background: var(--cian);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: #05010a;
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.boton-reproducir:hover {
+    background: var(--rosa);
+    transform: scale(1.05);
+}
+
+/* Hover personalizado por álbum */
+.album-parachutes:hover {
+    border-color: #FFFF00;
+    box-shadow: 0 0 30px rgba(255, 255, 0, 0.5);
+}
+
+.album-rush:hover {
+    border-color: #ffffff;
+    box-shadow: 0 0 30px rgb(255, 255, 255);
+}
+
+.album-xy:hover {
+    border-color: #0047AB;
+    box-shadow: 0 0 30px rgba(0, 71, 171, 0.6);
+}
+
+.album-viva:hover {
+    border-color: #654321;
+    box-shadow: 0 0 30px rgba(101, 67, 33);
+}
+
+.album-prospekt:hover {
+    border-color: #e4870d;
+    box-shadow: 0 0 30px rgb(228, 135, 13);
+}
+
+.album-mylo:hover {
+    border-color: #FF10F0;
+    box-shadow: 0 0 35px rgba(255, 16, 240, 0.7);
+}
+
+.album-ghost:hover {
+    border-color: #13708f;
+    box-shadow: 0 0 30px rgba(19, 112, 143);
+}
+
+.album-head:hover {
+    border-color: #CC5500;
+    box-shadow: 0 0 30px rgb(204, 85, 0);
+}
+
+.album-kaleidoscope:hover {
+    border-color: #3232FF;
+    box-shadow: 0 0 30px rgb(50, 50, 255);
+}
+
+.album-everyday:hover {
+    border-color: #808080;
+    box-shadow: 0 0 30px rgba(128, 128, 128);
+}
+
+.album-spheres:hover {
+    border-color: #000064;
+    box-shadow: 0 0 30px rgba(0, 0, 100);
+}
+
+.album-moon:hover {
+    border-color: #00446A;
+    box-shadow: 0 0 35px rgb(0, 68, 106);
+}
+
+
+/* GIRAS */
+.seccion-giras {
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+  padding: 30px 5% 0 5%;
+  width: 90%;
+  margin: auto;
+}
+
+.row-gira {
+  display: flex;
+  align-items: stretch;
+  /* Hace que imagen y texto tengan la misma altura */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+/* Clase para invertir el orden en la Temporada 2 */
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.texto-era {
+  flex: 0 0 70%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imagen-giras {
+  flex: 0 0 31%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  min-height: 400px;
+  filter: grayscale(0.3) contrast(1.2);
+  background-position: center;
+  transition: 0.5s;
+}
+
+/* Contenedor que agrupa las dos fotos */
+.contenedor-imagenes-vertical {
+    flex: 0 0 31%; /* Mantiene el ancho que ya tenías */
+    display: flex;
+    flex-direction: column; /* Las apila una arriba de la otra */
+    gap: 0; /* Cambia a 10px si quieres una pequeña separación entre ellas */
+}
+
+/* Estilo para cada imagen individual */
+.imagen-gira-v {
+    flex: 1; /* Hace que cada foto ocupe la mitad exacta de la altura */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+    filter: grayscale(0.3) contrast(1.2);
+}
+
+.imagen-gira-v:hover {
+    filter: grayscale(0);
+}
+
+.e1-box {
+  border: 3px solid #0047AB;
+  box-shadow: -10px 0 20px rgba(255, 255, 0, 0.5);
+}
+
+.e1-box h2 {
+  color: var(--cian);
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.e2-box {
+  border: 3px solid #654321;
+  box-shadow: 10px 0 20px rgba(255, 16, 240, 0.7);
+}
+
+.e2-box h2 {
+  color: var(--cian);
+  font-size: 40px;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.e3-box {
+  border: 3px solid #CC5500;
+  box-shadow: -10px 0 20px rgb(50, 50, 255);
+}
+
+.e3-box h2 {
+  color: var(--cian);
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.e4-box {
+  border: 3px solid #00446A;
+  box-shadow: 10px 0 20px rgba(0, 0, 100);
+}
+
+.e4-box h2 {
+  color: var(--cian);
+  font-size: 40px;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.e2-box, .e4-box p {
+  text-align: right;
+}
+
+.e1-box, .e2-box, .e3-box, .e4-box {
+  border-radius: 15px; 
+} 
+
+.parrafo-giras {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #cccccc;
+  text-align: justify;
+}
 
 /* DATOS CURIOSOS */
 .seccion-curiosidades { padding: 100px 10%; background: #080212; }
@@ -156,20 +484,195 @@ body {
 .neon-pink { color: var(--rosa); font-weight: bold; text-shadow: 0 0 5px var(--rosa); }
 .neon-blue { color: var(--cian); font-weight: bold; text-shadow: 0 0 5px var(--cian); }
 
-footer { text-align: center; padding: 40px; font-size: 0.8rem; opacity: 0.6; }
-
-/* Media Query para Celulares */
-@media screen and (max-width: 767px) {
-    .footer-container {
-        display: flex;
-        flex-direction: column; /* Los apila verticalmente */
-        text-align: center;
-        gap: 10px;
-    }
-
-    .footer-left, .footer-right {
-        text-align: center;
-        padding: 0;
-    }
+/* Contenedor para centrar el botón */
+.contenedor-trivia {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    padding: 40px 0;         /* Espacio arriba y abajo del botón */
+    width: 100%;
 }
 
+/* El botón de Trivia */
+.boton-trivia {
+    background-color: transparent;
+    color: var(--cian);
+    border: 2px solid var(--cian);
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    /* MANEJO DEL TAMAÑO: */
+    padding: 25px 60px;      /* 1. Relleno (Aumenta el tamaño desde adentro) */
+    font-size: 2rem;       /* 2. Tamaño de la fuente (Escala el botón) */
+    min-width: 300px;        /* 3. Ancho mínimo (Asegura un tamaño base) */
+    border-radius: 30px;     /* Redondeado de esquinas */
+}
+
+/* Efecto al pasar el mouse */
+.boton-trivia:hover {
+    background-color: var(--cian);
+    color: var(--fondo);
+    box-shadow: 0 0 20px var(--cian);
+    transform: translateY(-3px); /* Pequeño salto hacia arriba */
+}
+
+/* --- ESTILOS DEL FOOTER CORREGIDOS --- */
+footer {
+    background-color: #05010a; /* Fondo oscuro para que resalten los botones */
+    padding: 30px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between; /* Separa sociales a la izq y textos a la der */
+    align-items: center; /* Centra verticalmente */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Sección de Botones Sociales */
+.footer-socials {
+    display: flex;
+    gap: 15px; /* Espacio entre botones */
+}
+
+/* El botón circular blanco y transparente */
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;  /* Tamaño del círculo */
+    height: 40px;
+    border-radius: 50%; /* Lo hace circular */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Borde blanco transparente */
+    color: rgba(255, 255, 255, 0.7); /* Icono blanco transparente */
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease; /* Animación suave */
+    background-color: transparent;
+}
+
+/* Efecto Hover (igual que en el video) */
+.social-btn:hover {
+    background-color: #ffffff; /* Fondo se vuelve blanco sólido */
+    color: #05010a;            /* Icono se vuelve oscuro */
+    border-color: #ffffff;     /* Borde se vuelve blanco sólido */
+    transform: translateY(-3px); /* Pequeño salto hacia arriba */
+}
+
+.footer-credits {
+    text-align: center;      /* Asegura que el texto esté centrado */
+    width: 100%;
+}
+
+.footer-credits p {
+    margin: 5px 0;
+    display: block;          /* Hace que cada frase ocupe su propia línea */
+}
+
+.footer-credits .spans a {
+    color: var(--rosa); /* O usa var(--cian) si prefieres */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-credits .spans a:hover {
+    text-decoration: underline;
+}
+
+
+/* RESPONSIVE DESIGN (PARA TODOS LOS CELULARES) */
+
+@media screen and (max-width: 768px) {
+    /* 1. Ajuste de Títulos Principales */
+    .hero-content h1 {
+        font-size: 2.5rem; /* Más pequeño para que no se corte */
+        letter-spacing: 2px;
+    }
+
+    .titulo-seccion {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* 2. Navegación (Navbar) */
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nav-links {
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap; /* Si hay muchos links, saltan de línea */
+        justify-content: center;
+    }
+
+    .nav-links li a {
+        font-size: 0.9rem;
+    }
+
+    /* 3. Grid de Integrantes (Banda) */
+    .grid-integrantes {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .tarjeta-miembro {
+        max-width: 100%; /* Que ocupen todo el ancho disponible */
+    }
+
+    /* 4. Sección de Discos (Discografía) */
+    .contenedor-discos {
+        flex-direction: column; /* Se apilan verticalmente */
+        height: auto;
+        gap: 15px;
+    }
+
+    .tarjeta-album {
+        width: 100% !important; /* Forzamos el ancho completo */
+        height: 300px; /* Altura fija para que no sea infinita */
+    }
+
+    .tarjeta-album.active {
+        height: 450px; /* Un poco más alta cuando se abre */
+    }
+
+    /* 5. Giras y Hechos Curiosos */
+    .grid-giras, .grid-curiosidades {
+        grid-template-columns: 1fr; /* Todo en una columna */
+    }
+
+    .box-gira, .box-curiosidad {
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* 6. Trivia Button */
+    .boton-trivia {
+        width: 90%; /* Casi todo el ancho del cel */
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+
+    /* 7. Footer */
+    .footer-container {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .footer-socials {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .footer-credits {
+        text-align: center;
+    }
+}

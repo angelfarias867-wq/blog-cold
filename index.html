@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-     <link rel="icon" type="avif" href="img\logo.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="avif" href="img/logo.png" />
     <title>Coldplay</title>
 </head>
+
 <body>
 
     <nav class="navbar">
@@ -15,11 +18,13 @@
         <ul class="nav-links">
             <li><a href="#banda">Banda</a></li>
             <li><a href="#discos">Discografia</a></li>
+            <li><a href="#giras">Giras</a></li>
             <li><a href="#curiosidades">Hechos Curiosos</a></li>
         </ul>
     </nav>
 
     <header class="hero">
+        <div class="hero-background"></div> <!-- Capa de fondo -->
         <div class="hero-content">
             <h1>C O L <span class="text-gradient">D P L</span> A Y</h1>
         </div>
@@ -53,22 +58,276 @@
 
     <section id="discos" class="seccion-discos">
         <div class="linea-division"></div>
-        <h2 class="titulo-seccion">ÚLTIMO LANZAMIENTO</h2>
-        
-        <div class="row-album">
-            <div class="album-img" style="background-image: url('img/MM.jpg');"></div>
-            <div class="album-text">
-                <span class="tag">Album • 2024</span>
+        <h2 class="titulo-seccion">DISCOGRAFÍA</h2>
+
+        <div class="grid-albums">
+            <div class="tarjeta-album album-parachutes" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/Parachutes.jpg');"></div>
+                <h3>Parachutes</h3>
+                <p>2000</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>Yellow</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-parachutes')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-parachutes" src="music/Yellow.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-album album-rush" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/arobtth.jpg');"></div>
+                <h3>A Rush of Blood to the Head</h3>
+                <p>2002</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>Clocks</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-rush')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-rush" src="music/Clocks.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="tarjeta-album album-xy" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/x&y.jpg');"></div>
+                <h3>X&Y</h3>
+                <p>2005</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>Fix You</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-xy')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-xy" src="music/Fix You.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-album album-viva" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/vlv.jpg');"></div>
+                <h3>Viva la Vida</h3>
+                <p>2008</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>Viva la Vida</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-viva')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-viva" src="music/Viva La Vida.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-album album-prospekt" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/pm.jpg');"></div>
+                <h3>Prospekt's March (EP)</h3>
+                <p>2008</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>Life In Technicolor ii</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-prospect')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-prospect" src="music/Life in Technicolor ii.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-album album-mylo" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/ml.jpg');"></div>
+                <h3>Mylo Xyloto</h3>
+                <p>2011</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>Paradise</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-mylo')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-mylo" src="music/Paradise.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-album album-ghost" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/gs.jpg');"></div>
+                <h3>Ghost Stories</h3>
+                <p>2014</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>A Sky Full of Stars</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-ghost')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-ghost" src="music/A Sky Full Of Stars.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-album album-head" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/ahfod.jpg');"></div>
+                <h3>A Head Full of Dreams</h3>
+                <p>2015</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>Hymn for the Weekend</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-ahfod')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-ahfod" src="music/Hymn for the Weekend.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-album album-kaleidoscope" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/Kaleidoscope.jpg');"></div>
+                <h3>Kaleidoscope (EP)</h3>
+                <p>2017</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>Something Just Like This</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-kaleidoscope')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-kaleidoscope" src="music/something like .mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-album album-everyday" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/el.jpg');"></div>
+                <h3>Everyday Life</h3>
+                <p>2019</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>Orphans</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-everyday')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-everyday" src="music/Orphans .mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-album album-spheres" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/mots.jpg');"></div>
+                <h3>Music of the Spheres</h3>
+                <p>2021</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>My Universe</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-mots')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-mots" src="music/my universe.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-album album-moon" onclick="expandirAlbum(this)">
+                <div class="foto-album" style="background-image: url('img/MM.jpg');"></div>
                 <h3>Moon Music</h3>
-                <p> Es el décimo álbum de estudio de la banda, 
-                    se lanzó el 4 de octubre de 2024, siendo la segunda
-                    parte de su proyecto Music of the Spheres, después de 
-                    From Earth with Love (2021). Ambos álbumes están 
-                    siendo apoyados simultáneamente a través de la gira 
-                    mundial de Music of the Spheres.</p>
-                <div>¿Quieres escuchar las canciones y/o ver los videos oficiales del album? Presiona 
-                    <span class="spans"><a href="https://www.youtube.com/@coldplay" target="_blank"> Aqui</a></span> 
-                    para escuchar y/o ver los videos oficiales de album</div>
+                <p>2024</p>
+
+                <div class="expand-content">
+                    <h4 class="cancion-famosa">Mayor Éxito <span>Feels Like im Falling in Love</span></h4>
+                    <div class="reproductor">
+                        <button class="boton-reproducir" onclick="controlarAudio(event, 'audio-mm')">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                        <audio id="audio-mm" src="music/feels like im falling in love.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h2 id="giras" class="titulo-seccion">GIRAS</h2>
+
+    <section class="seccion-giras">
+        <div class="row-gira e1-box">
+            <div class="texto-era">
+                <h2>Era Inicial</h2>
+                <p class="parrafo-giras">
+                    <strong>Parachutes Tour (2000-2001)</strong>: nna gira íntima en teatros y clubes, caracterizada por
+                    una atmósfera cálida y minimalista con luces amarillas. <br><br>
+                    <strong>A Rush Of Blood To The Head Tour (2002-2003)</strong>: marcó el salto a los estadios y contó
+                    con una producción de luces profesional, de la cual nació el álbum Live 2003. <br><br>
+                    <strong>Twisted Logic Tour (2005-2007)</strong>: una gira masiva para el álbum X&Y que utilizó
+                    pantallas LED gigantes y una estética de ciencia ficción.
+                </p>
+            </div>
+            <div class="contenedor-imagenes-vertical">
+                <div class="imagen-gira-v" style="background-image: url('img/arobttht.jpg');"></div>
+                <div class="imagen-gira-v" style="background-image: url('img/tlt.JPG');"></div>
+            </div>
+        </div>
+        <div class="row-gira reverse e2-box">
+            <div class="texto-era">
+                <h2>Era de la Experimentación Visual</h2>
+                <p class="parrafo-giras">
+                    <strong>Viva La Vida Tour (2008-2010)</strong>: famosa por su estética de la Revolución Francesa
+                    y el uso de mariposas de papel cayendo del techo. <br><br>
+                    <strong>Mylo Xyloto Tour (2011-2012)</strong> : fue la gira que revolucionó sus conciertos
+                    al introducir por primera vez las Xylobands (pulseras LED). <br><br>
+                    <strong>Ghost Stories Tour (2014)</strong>: una serie de conciertos cortos y muy íntimos
+                    en lugares exclusivos para presentar su álbum más personal.
+                </p>
+            </div>
+            <div class="contenedor-imagenes-vertical">
+                <div class="imagen-gira-v" style="background-image: url('img/vlvt.jpg');"></div>
+                <div class="imagen-gira-v" style="background-image: url('img/mxt.jpg');"></div>
+            </div>
+        </div>
+        <div class="row-gira e3-box">
+            <div class="texto-era">
+                <h2>Era de la Conexión Global</h2>
+                <p class="parrafo-giras">
+                    <strong>A Head Full Of Dreams Tour (2015-2016)</strong>: esta era no
+                    fue solo una gira de conciertos, fue una declaración de optimismo
+                    puro tras la etapa introspectiva de Ghost Stories. El concepto central
+                    fue la unificación. la banda diseñó esta gira para que cada asistente,
+                    sin importar en qué parte del mundo estuviera, se sintiera parte de una
+                    celebración psicodélica y vibrante.
+                </p>
+            </div>
+            <div class="contenedor-imagenes-vertical">
+                <div class="imagen-gira-v" style="background-image: url('img/ahfodt2.jpg');"></div>
+                <div class="imagen-gira-v" style="background-image: url('img/ahfodt.jpg');"></div>
+            </div>
+        </div>
+        <div class="row-gira reverse e4-box">
+            <div class="texto-era">
+                <h2>Era Ecológica Medioambiental</h2>
+                <p class="parrafo-giras">
+                    <strong>Music Of The Spheres World Tour (2022-Presente)</strong>: Si la
+                    gira anterior fue sobre unir al mundo, esta gira es sobre salvarlo. Aquí,
+                    la banda dio un salto tecnológico y ético sin precedentes. El concepto es
+                    que somos ciudadanos de un sistema solar ("The Spheres") y nuestra primera
+                    misión es proteger nuestro hogar. <br></br> En esta gira la banda se comprometió en
+                    cuidar el medio ambiente y lo hacen mediante pisos cinéticos, bicicletas eléctricas,
+                    ademas se asociaron con One Tree Planted para plantar un árbol por cada entrada vendida.
+
+                </p>
+            </div>
+            <div class="contenedor-imagenes-vertical">
+                <div class="imagen-gira-v" style="background-image: url('img/motswt.jpg');"></div>
+                <div class="imagen-gira-v" style="background-image: url('img/motswt2.jpg');"></div>
             </div>
         </div>
     </section>
@@ -78,27 +337,54 @@
             <h2 class="titulo-seccion">¿SABÍAS QUÉ?</h2>
             <div class="dato-box">
                 <p>
-                  <span class="neon-blue">Dato Curioso:</span> El Music of the Shereps tiene altas 
-                  espectativas de ser la <strong>Mejor Gira de la historia</strong>, ya es la gira 
-                  mas asistida, en el aspecto de la mas taquillera es superado solamente por el 
-                  <strong>The Eras Tour</strong> de <strong>Taylor Swift</strong> teniendo una diferencia pequeña. 
-                  Si quieres leer más sobre el motswt (Music of the Shereps) presiona <span class="spans">
-                  <a href="https://es.wikipedia.org/wiki/Music_of_the_Spheres_World_Tour" target="_blank"> Aqui</a></span>
+                    <span class="neon-blue">Datos Curiosos:</span> <br></br>La temática del Music of the Spheres
+                    fue inspirada en el sistema planetario de Star Wars. <br></br> Existe un quinto miembro el cual se
+                    llama <span class="spans"><a href="https://es.wikipedia.org/wiki/Phil_Harvey" target="_blank">Phil
+                    Harvey</a></span> quien ha sido el manager y director creativo de la banda desde sus inicios.
                 </p>
             </div>
         </div>
+
+        <div class="contenedor-trivia">
+            <a href="index2.html" class="enlace-trivia">
+                <button class="boton-trivia">TRIVIA</button>
+            </a>
+        </div>
     </section>
 
-<footer>
-    <div class="footer-container">
-        <div class="footer-left">
-            <p>Página oficial de Coldplay <span class="spans"><a href="https://www.coldplay.com" target="_blank">AQUÍ</a></span></p>
-        </div>
-        <div class="footer-right">
-            <p>Creado por <span class="spans"><a href="https://github.com/angelfarias867-wq" target="_blank">Ángel Farías</a></span></p>
-        </div>
-    </div>
-</footer>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/coldplay" target="_blank" class="social-btn" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/coldplay" target="_blank" class="social-btn" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://open.spotify.com/artist/4gzpq5DPGxSnKTe4SA8HAU" target="_blank" class="social-btn"
+                    title="Spotify">
+                    <i class="fab fa-spotify"></i>
+                </a>
+                <a href="https://www.youtube.com/user/ColdplayVEVO" target="_blank" class="social-btn" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com/coldplay/" target="_blank" class="social-btn" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@coldplay" target="_blank" class="social-btn" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
 
+            <div class="footer-credits">
+                <p>Página oficial de Coldplay <span class="spans"><a href="https://www.coldplay.com"
+                            target="_blank">AQUÍ</a></span></p>
+                <p>Creado por <span class="spans"><a href="https://github.com/angelfarias867-wq" target="_blank">Ángel
+                            Farías</a></span></p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
 </body>
+
 </html>
