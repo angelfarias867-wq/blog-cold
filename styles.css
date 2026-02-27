@@ -644,14 +644,92 @@ footer {
     }
 
     /* 5. Giras y Hechos Curiosos */
-    .grid-giras, .grid-curiosidades {
-        grid-template-columns: 1fr; /* Todo en una columna */
-    }
+    /* GIRAS - Nueva estructura: imágenes arriba, texto abajo en todas */
+/* GIRAS */
+.seccion-giras {
+    padding: 40px 5% 60px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
 
-    .box-gira, .box-curiosidad {
-        padding: 20px;
-        text-align: center;
-    }
+.row-gira {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border: 3px solid;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 50px;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Colores por era */
+.e1-box { border-color: #FFFF00; box-shadow: 0 0 30px rgba(255, 255, 0, 0.4); }
+.e2-box { border-color: #FF00FF; box-shadow: 0 0 30px rgba(255, 0, 255, 0.4); }
+.e3-box { border-color: #00FFFF; box-shadow: 0 0 30px rgba(0, 255, 255, 0.4); }
+.e4-box { border-color: #00FF7F; box-shadow: 0 0 30px rgba(0, 255, 127, 0.4); }
+
+.contenedor-imagenes-vertical {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    gap: 0 !important;
+    overflow: hidden;
+}
+
+.imagen-gira-v {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 250px;           /* altura mínima para que el div no colapse si la imagen falla */
+    height: auto;                /* permite crecer según la imagen */
+    width: 100%;
+    background-size: contain;    /* volvemos a contain para ver la imagen completa */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #0a0015;   /* fallback oscuro si falla la carga */
+    flex: none;
+}
+
+/* Primera imagen pegada arriba */
+.contenedor-imagenes-vertical .imagen-gira-v:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Segunda imagen sin margen abajo */
+.contenedor-imagenes-vertical .imagen-gira-v:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.imagen-gira-v:hover {
+    transform: scale(1.03);
+    filter: brightness(1.1);
+}
+
+.texto-era {
+    padding: 40px 30px;
+    text-align: center;
+    flex: 1;
+}
+
+.texto-era h2 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: var(--cian);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.parrafo-giras {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #e0e0e0;
+    text-align: justify;
+}
 
     /* 6. Trivia Button */
     .boton-trivia {
