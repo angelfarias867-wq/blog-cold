@@ -57,10 +57,14 @@ body {
 
 /* Hero con fondo full-page (solo en esta sección) */
 .hero {
-    position: relative;              /* Necesario para posicionar la capa de fondo */
-    height: 100vh;                   /* Ocupa toda la altura de la ventana */
-    min-height: 700px;               /* Evita que se haga muy pequeño en móviles */
-    width: 100vw;                    /* Ancho completo de la ventana */
+    position: relative;
+    /* Necesario para posicionar la capa de fondo */
+    height: 100vh;
+    /* Ocupa toda la altura de la ventana */
+    min-height: 700px;
+    /* Evita que se haga muy pequeño en móviles */
+    width: 100vw;
+    /* Ancho completo de la ventana */
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -74,24 +78,32 @@ body {
 /* Capa de imagen de fondo (full-page) */
 .hero-background {
     position: absolute;
-    inset: 0;                        /* Cubre todo el header: top, right, bottom, left = 0 */
-    background-image: url('img/Coldplay.jpg');  /* ← CAMBIA ESTA RUTA por tu imagen */
-    background-size: cover;          /* Cubre todo sin distorsionar */
-    background-position: center;     /* Centrado */
+    inset: 0;
+    /* Cubre todo el header: top, right, bottom, left = 0 */
+    background-image: url('img/Coldplay.jpg');
+    /* ← CAMBIA ESTA RUTA por tu imagen */
+    background-size: cover;
+    /* Cubre todo sin distorsionar */
+    background-position: center;
+    /* Centrado */
     background-repeat: no-repeat;
-    z-index: -1;                     /* Detrás del texto */
-    filter: brightness(0.5) contrast(1.1) saturate(1.2); /* Ajusta para que el texto sea legible */
+    z-index: -1;
+    /* Detrás del texto */
+    filter: brightness(0.5) contrast(1.1) saturate(1.2);
+    /* Ajusta para que el texto sea legible */
 }
 
 /* El contenido (texto) queda por encima */
 .hero-content {
     position: relative;
-    z-index: 2;                      /* Por encima de la imagen */
+    z-index: 2;
+    /* Por encima de la imagen */
 }
 
 /* Ajusta el tamaño del título para que destaque en full-screen */
 .hero h1 {
-    font-size: 8rem;                 /* Grande para full-page */
+    font-size: 8rem;
+    /* Grande para full-page */
     letter-spacing: 20px;
     margin: 0;
     line-height: 1.1;
@@ -112,11 +124,13 @@ body {
 }
 
 #spans {
-    color:#ffffff 
+    color: #ffffff
 }
 
 /* GRID DE INTEGRANTES */
-.seccion-banda { padding: 100px 10%; }
+.seccion-banda {
+    padding: 100px 10%;
+}
 
 .grid-integrantes {
     display: grid;
@@ -147,8 +161,9 @@ body {
     background-size: cover;
 }
 
-/* ROW DE ÁLBUM */
-.seccion-discos { padding: 80px 10%; }
+.seccion-discos {
+    padding: 80px 10%;
+}
 
 .linea-division {
     height: 2px;
@@ -156,7 +171,6 @@ body {
     margin-bottom: 60px;
 }
 
-/* GRID DE CANCIONES - ajustado para imágenes más grandes y cuadradas */
 .grid-albums {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -167,13 +181,14 @@ body {
 
 .tarjeta-album {
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 20px;          /* o 24px si quieres más redondeado */
+    border-radius: 20px;
+    /* o 24px si quieres más redondeado */
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     transition: all 0.4s ease;
     cursor: pointer;
-    
+
     /* ← Esto crea espacio alrededor de todo el contenido */
     padding: 12px;
     box-sizing: border-box;
@@ -219,12 +234,14 @@ body {
 /* ESTILOS PARA LA EXPANSIÓN */
 .tarjeta-album {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    max-height: 350px; /* Altura cerrada */
+    max-height: 350px;
+    /* Altura cerrada */
 }
 
 /* Cuando la tarjeta tiene la clase 'active' */
 .tarjeta-album.active {
-    max-height: 600px; /* Se expande verticalmente */
+    max-height: 600px;
+    /* Se expande verticalmente */
     transform: scale(1.02);
     cursor: default;
 }
@@ -344,60 +361,64 @@ body {
 
 /* GIRAS */
 .seccion-giras {
-  color: white;
-  font-family: "Roboto Condensed", sans-serif;
-  padding: 30px 5% 0 5%;
-  width: 90%;
-  margin: auto;
+    color: white;
+    font-family: "Roboto Condensed", sans-serif;
+    padding: 30px 5% 0 5%;
+    width: 90%;
+    margin: auto;
 }
 
 .row-gira {
-  display: flex;
-  align-items: stretch;
-  /* Hace que imagen y texto tengan la misma altura */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  padding: 0;
-  margin-bottom: 40px;
+    display: flex;
+    align-items: stretch;
+    /* Hace que imagen y texto tengan la misma altura */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    padding: 0;
+    margin-bottom: 40px;
 }
 
 /* Clase para invertir el orden en la Temporada 2 */
 .reverse {
-  flex-direction: row-reverse;
+    flex-direction: row-reverse;
 }
 
 .texto-era {
-  flex: 0 0 70%;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    flex: 0 0 70%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .imagen-giras {
-  flex: 0 0 31%;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
-  min-height: 400px;
-  filter: grayscale(0.3) contrast(1.2);
-  background-position: center;
-  transition: 0.5s;
+    flex: 0 0 31%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    min-height: 400px;
+    filter: grayscale(0.3) contrast(1.2);
+    background-position: center;
+    transition: 0.5s;
 }
 
 /* Contenedor que agrupa las dos fotos */
 .contenedor-imagenes-vertical {
-    flex: 0 0 31%; /* Mantiene el ancho que ya tenías */
+    flex: 0 0 31%;
+    /* Mantiene el ancho que ya tenías */
     display: flex;
-    flex-direction: column; /* Las apila una arriba de la otra */
-    gap: 0; /* Cambia a 10px si quieres una pequeña separación entre ellas */
+    flex-direction: column;
+    /* Las apila una arriba de la otra */
+    gap: 0;
+    /* Cambia a 10px si quieres una pequeña separación entre ellas */
 }
 
 /* Estilo para cada imagen individual */
 .imagen-gira-v {
-    flex: 1; /* Hace que cada foto ocupe la mitad exacta de la altura */
+    flex: 1;
+    /* Hace que cada foto ocupe la mitad exacta de la altura */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -410,68 +431,75 @@ body {
 }
 
 .e1-box {
-  border: 3px solid #0047AB;
-  box-shadow: -10px 0 20px rgba(255, 255, 0, 0.5);
+    border: 3px solid #0047AB;
+    box-shadow: -10px 0 20px rgba(255, 255, 0, 0.5);
 }
 
 .e1-box h2 {
-  color: var(--cian);
-  font-size: 40px;
-  margin-bottom: 20px;
+    color: var(--cian);
+    font-size: 40px;
+    margin-bottom: 20px;
 }
 
 .e2-box {
-  border: 3px solid #654321;
-  box-shadow: 10px 0 20px rgba(255, 16, 240, 0.7);
+    border: 3px solid #654321;
+    box-shadow: 10px 0 20px rgba(255, 16, 240, 0.7);
 }
 
 .e2-box h2 {
-  color: var(--cian);
-  font-size: 40px;
-  margin-bottom: 20px;
-  text-align: right;
+    color: var(--cian);
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: right;
 }
 
 .e3-box {
-  border: 3px solid #CC5500;
-  box-shadow: -10px 0 20px rgb(50, 50, 255);
+    border: 3px solid #CC5500;
+    box-shadow: -10px 0 20px rgb(50, 50, 255);
 }
 
 .e3-box h2 {
-  color: var(--cian);
-  font-size: 40px;
-  margin-bottom: 20px;
+    color: var(--cian);
+    font-size: 40px;
+    margin-bottom: 20px;
 }
 
 .e4-box {
-  border: 3px solid #00446A;
-  box-shadow: 10px 0 20px rgba(0, 0, 100);
+    border: 3px solid #00446A;
+    box-shadow: 10px 0 20px rgba(0, 0, 100);
 }
 
 .e4-box h2 {
-  color: var(--cian);
-  font-size: 40px;
-  margin-bottom: 20px;
-  text-align: right;
+    color: var(--cian);
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: right;
 }
 
-.e2-box, .e4-box p {
-  text-align: right;
+.e2-box,
+.e4-box p {
+    text-align: right;
 }
 
-.e1-box, .e2-box, .e3-box, .e4-box {
-  border-radius: 15px; 
-} 
+.e1-box,
+.e2-box,
+.e3-box,
+.e4-box {
+    border-radius: 15px;
+}
 
 .parrafo-giras {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #cccccc;
-  text-align: justify;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cccccc;
+    text-align: justify;
 }
 
 /* DATOS CURIOSOS */
-.seccion-curiosidades { padding: 100px 10%; background: #080212; }
+.seccion-curiosidades {
+    padding: 100px 10%;
+    background: #080212;
+}
 
 .dato-box {
     background: rgba(255, 255, 255, 0.03);
@@ -481,14 +509,25 @@ body {
     border-radius: 0 15px 15px 0;
 }
 
-.neon-pink { color: var(--rosa); font-weight: bold; text-shadow: 0 0 5px var(--rosa); }
-.neon-blue { color: var(--cian); font-weight: bold; text-shadow: 0 0 5px var(--cian); }
+.neon-pink {
+    color: var(--rosa);
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--rosa);
+}
+
+.neon-blue {
+    color: var(--cian);
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--cian);
+}
 
 /* Contenedor para centrar el botón */
 .contenedor-trivia {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    padding: 40px 0;         /* Espacio arriba y abajo del botón */
+    justify-content: center;
+    /* Centra horizontalmente */
+    padding: 40px 0;
+    /* Espacio arriba y abajo del botón */
     width: 100%;
 }
 
@@ -502,79 +541,73 @@ body {
     letter-spacing: 2px;
     cursor: pointer;
     transition: all 0.3s ease;
-    
-    /* MANEJO DEL TAMAÑO: */
-    padding: 25px 60px;      /* 1. Relleno (Aumenta el tamaño desde adentro) */
-    font-size: 2rem;       /* 2. Tamaño de la fuente (Escala el botón) */
-    min-width: 300px;        /* 3. Ancho mínimo (Asegura un tamaño base) */
-    border-radius: 30px;     /* Redondeado de esquinas */
+    padding: 25px 60px;
+    font-size: 2rem;
+    min-width: 300px;
+    border-radius: 30px;
 }
 
-/* Efecto al pasar el mouse */
 .boton-trivia:hover {
     background-color: var(--cian);
     color: var(--fondo);
     box-shadow: 0 0 20px var(--cian);
-    transform: translateY(-3px); /* Pequeño salto hacia arriba */
+    transform: translateY(-3px);
+    /* Pequeño salto hacia arriba */
 }
 
-/* --- ESTILOS DEL FOOTER CORREGIDOS --- */
 footer {
-    background-color: #05010a; /* Fondo oscuro para que resalten los botones */
+    background-color: #05010a;
     padding: 30px 5%;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-container {
     display: flex;
-    justify-content: space-between; /* Separa sociales a la izq y textos a la der */
-    align-items: center; /* Centra verticalmente */
+    justify-content: space-between;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Sección de Botones Sociales */
 .footer-socials {
     display: flex;
-    gap: 15px; /* Espacio entre botones */
+    gap: 15px;
 }
 
-/* El botón circular blanco y transparente */
 .social-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;  /* Tamaño del círculo */
+    width: 40px;
     height: 40px;
-    border-radius: 50%; /* Lo hace circular */
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Borde blanco transparente */
-    color: rgba(255, 255, 255, 0.7); /* Icono blanco transparente */
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 1.1rem;
     text-decoration: none;
-    transition: all 0.3s ease; /* Animación suave */
+    transition: all 0.3s ease;
     background-color: transparent;
 }
 
-/* Efecto Hover (igual que en el video) */
 .social-btn:hover {
-    background-color: #ffffff; /* Fondo se vuelve blanco sólido */
-    color: #05010a;            /* Icono se vuelve oscuro */
-    border-color: #ffffff;     /* Borde se vuelve blanco sólido */
-    transform: translateY(-3px); /* Pequeño salto hacia arriba */
+    background-color: #ffffff;
+    color: #05010a;
+    border-color: #ffffff;
+    transform: translateY(-3px);
 }
 
 .footer-credits {
-    text-align: center;      /* Asegura que el texto esté centrado */
+    text-align: center;
     width: 100%;
 }
 
 .footer-credits p {
     margin: 5px 0;
-    display: block;          /* Hace que cada frase ocupe su propia línea */
+    display: block;
 }
 
 .footer-credits .spans a {
-    color: var(--rosa); /* O usa var(--cian) si prefieres */
+    color: var(--rosa);
     text-decoration: none;
     font-weight: bold;
 }
@@ -583,13 +616,10 @@ footer {
     text-decoration: underline;
 }
 
-
 /* RESPONSIVE DESIGN (PARA TODOS LOS CELULARES) */
-
 @media screen and (max-width: 768px) {
-    /* 1. Ajuste de Títulos Principales */
     .hero-content h1 {
-        font-size: 2.5rem; /* Más pequeño para que no se corte */
+        font-size: 2.5rem;
         letter-spacing: 2px;
     }
 
@@ -598,7 +628,6 @@ footer {
         margin-bottom: 30px;
     }
 
-    /* 2. Navegación (Navbar) */
     .navbar {
         flex-direction: column;
         padding: 10px;
@@ -608,7 +637,7 @@ footer {
     .nav-links {
         gap: 10px;
         margin-top: 10px;
-        flex-wrap: wrap; /* Si hay muchos links, saltan de línea */
+        flex-wrap: wrap;
         justify-content: center;
     }
 
@@ -616,129 +645,134 @@ footer {
         font-size: 0.9rem;
     }
 
-    /* 3. Grid de Integrantes (Banda) */
     .grid-integrantes {
-        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        grid-template-columns: 1fr;
         gap: 20px;
         padding: 20px;
     }
 
     .tarjeta-miembro {
-        max-width: 100%; /* Que ocupen todo el ancho disponible */
+        max-width: 100%;
     }
 
-    /* 4. Sección de Discos (Discografía) */
     .contenedor-discos {
-        flex-direction: column; /* Se apilan verticalmente */
+        flex-direction: column;
         height: auto;
         gap: 15px;
     }
 
     .tarjeta-album {
-        width: 100% !important; /* Forzamos el ancho completo */
-        height: 300px; /* Altura fija para que no sea infinita */
+        width: 100% !important;
+        height: 300px;
     }
 
     .tarjeta-album.active {
-        height: 450px; /* Un poco más alta cuando se abre */
+        height: 450px;
     }
 
-    /* 5. Giras y Hechos Curiosos */
-    /* GIRAS - Nueva estructura: imágenes arriba, texto abajo en todas */
-/* GIRAS */
-.seccion-giras {
-    padding: 40px 5% 60px;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-}
+    .seccion-giras {
+        padding: 40px 5% 60px;
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+    }
 
-.row-gira {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    border: 3px solid;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 50px;
-    background: rgba(255, 255, 255, 0.02);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-}
+    .row-gira {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        border: 3px solid;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 50px;
+        background: rgba(255, 255, 255, 0.02);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
 
-/* Colores por era */
-.e1-box { border-color: #FFFF00; box-shadow: 0 0 30px rgba(255, 255, 0, 0.4); }
-.e2-box { border-color: #FF00FF; box-shadow: 0 0 30px rgba(255, 0, 255, 0.4); }
-.e3-box { border-color: #00FFFF; box-shadow: 0 0 30px rgba(0, 255, 255, 0.4); }
-.e4-box { border-color: #00FF7F; box-shadow: 0 0 30px rgba(0, 255, 127, 0.4); }
+    .e1-box {
+        border-color: #FFFF00;
+        box-shadow: 0 0 30px rgba(255, 255, 0, 0.4);
+    }
 
-.contenedor-imagenes-vertical {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    gap: 0 !important;
-    overflow: hidden;
-}
+    .e2-box {
+        border-color: #FF00FF;
+        box-shadow: 0 0 30px rgba(255, 0, 255, 0.4);
+    }
 
-.imagen-gira-v {
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height: 250px;           /* altura mínima para que el div no colapse si la imagen falla */
-    height: auto;                /* permite crecer según la imagen */
-    width: 100%;
-    background-size: contain;    /* volvemos a contain para ver la imagen completa */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #0a0015;   /* fallback oscuro si falla la carga */
-    flex: none;
-}
+    .e3-box {
+        border-color: #00FFFF;
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+    }
 
-/* Primera imagen pegada arriba */
-.contenedor-imagenes-vertical .imagen-gira-v:first-child {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
+    .e4-box {
+        border-color: #00FF7F;
+        box-shadow: 0 0 30px rgba(0, 255, 127, 0.4);
+    }
 
-/* Segunda imagen sin margen abajo */
-.contenedor-imagenes-vertical .imagen-gira-v:last-child {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-}
+    .contenedor-imagenes-vertical {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        gap: 0 !important;
+        overflow: hidden;
+    }
 
-.imagen-gira-v:hover {
-    transform: scale(1.03);
-    filter: brightness(1.1);
-}
+    .imagen-gira-v {
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 250px;
+        height: auto;
+        width: 100%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #0a0015;
+        flex: none;
+    }
 
-.texto-era {
-    padding: 40px 30px;
-    text-align: center;
-    flex: 1;
-}
+    .contenedor-imagenes-vertical .imagen-gira-v:first-child {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
 
-.texto-era h2 {
-    font-size: 2.5rem;
-    margin-bottom: 25px;
-    color: var(--cian);
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-}
+    .contenedor-imagenes-vertical .imagen-gira-v:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
 
-.parrafo-giras {
-    font-size: 1.15rem;
-    line-height: 1.9;
-    color: #e0e0e0;
-    text-align: justify;
-}
+    .imagen-gira-v:hover {
+        transform: scale(1.03);
+        filter: brightness(1.1);
+    }
 
-    /* 6. Trivia Button */
+    .texto-era {
+        padding: 40px 30px;
+        text-align: center;
+        flex: 1;
+    }
+
+    .texto-era h2 {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+        color: var(--cian);
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    }
+
+    .parrafo-giras {
+        font-size: 1.15rem;
+        line-height: 1.9;
+        color: #e0e0e0;
+        text-align: justify;
+    }
+
     .boton-trivia {
-        width: 90%; /* Casi todo el ancho del cel */
+        width: 90%;
         font-size: 1.5rem;
         padding: 15px;
     }
 
-    /* 7. Footer */
     .footer-container {
         flex-direction: column;
         gap: 25px;
