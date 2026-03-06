@@ -284,20 +284,30 @@ footer {
     }
 }
 
-/*RESPONSIVE*/
 @media screen and (max-width: 768px) {
-.footer-container {
-        flex-direction: column;
-        gap: 25px;
+    /* 1. Alineamos el contenedor principal en vertical */
+    .footer-container {
+        flex-direction: column; /* Apila redes sociales sobre créditos */
+        gap: 25px;              /* Espacio entre los dos bloques */
         text-align: center;
     }
 
-    .footer-socials {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
+    /* 2. Ajustamos los créditos para que no se amontonen */
     .footer-credits {
-        text-align: center;
+        display: flex;
+        flex-direction: column; /* Un párrafo sobre el otro */
+        gap: 12px;              /* Espacio entre líneas de texto */
+        width: 100%;
+    }
+
+    /* 3. Estilo para los enlaces (AQUÍ y Ángel Farías) */
+    .footer-credits p {
+        font-size: 0.95rem;     /* Tamaño cómodo para lectura en móvil */
+        line-height: 1.5;
+    }
+
+    .spans a {
+        display: inline-block;  /* Evita que los enlaces se corten */
+        padding: 2px 5px;
     }
 }
