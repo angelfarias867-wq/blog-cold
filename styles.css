@@ -603,17 +603,22 @@ footer {
 /* ------------------------------------------------------------- */
 /* RESPONSIVE DESIGN (PARA TODOS LOS CELULARES) */
 @media screen and (max-width: 768px) {
-    .hero-background {
-        background-attachment: scroll; /* Mejora el rendimiento en móviles */
-        background-size: contain;      /* Hace que la foto se vea COMPLETA */
-        background-position: center top; /* La alinea arriba para que no tape el texto */
-        height: 50vh;                  /* Reduce su altura para que no sea infinita */
-    }
-    
     .hero {
-        height: auto;
+        /* Mantenemos el alto para que la foto tenga espacio */
+        height: 80vh; 
         min-height: 500px;
-        padding-top: 100px; /* Espacio para que el menú no tape el título */
+        display: flex;
+        align-items: center; /* Centra verticalmente el contenido */
+        justify-content: center; /* Centra horizontalmente el contenido */
+        padding: 0;
+    }
+
+    .hero-background {
+        /* Cambiamos contain por cover para que llene el fondo del título */
+        background-size: cover; 
+        background-position: center;
+        /* Bajamos un poco la opacidad para que el título resalte más */
+        filter: brightness(0.4) contrast(1.1); 
     }
 
     .hero-content h1 {
