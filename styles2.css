@@ -283,3 +283,21 @@ footer {
         transform: translateY(0);
     }
 }
+
+/*RESPONSIVE*/
+@media screen and (max-width: 768px) {
+.footer-container {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .footer-socials {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .footer-credits {
+        text-align: center;
+    }
+}
