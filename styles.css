@@ -58,13 +58,9 @@ body {
 /* Hero con fondo full-page (solo en esta sección) */
 .hero {
     position: relative;
-    /* Necesario para posicionar la capa de fondo */
     height: 100vh;
-    /* Ocupa toda la altura de la ventana */
     min-height: 700px;
-    /* Evita que se haga muy pequeño en móviles */
     width: 100vw;
-    /* Ancho completo de la ventana */
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -75,35 +71,26 @@ body {
     background: radial-gradient(circle at center, rgba(26, 1, 61, 0.7) 0%, rgba(5, 1, 10, 0.95) 70%);
 }
 
-/* Capa de imagen de fondo (full-page) */
+/* Capa de imagen de fondo */
 .hero-background {
     position: absolute;
     inset: 0;
-    /* Cubre todo el header: top, right, bottom, left = 0 */
     background-image: url('img/Coldplay.jpg');
-    /* ← CAMBIA ESTA RUTA por tu imagen */
     background-size: cover;
-    /* Cubre todo sin distorsionar */
     background-position: center;
-    /* Centrado */
     background-repeat: no-repeat;
     z-index: -1;
-    /* Detrás del texto */
     filter: brightness(0.5) contrast(1.1) saturate(1.2);
-    /* Ajusta para que el texto sea legible */
 }
 
-/* El contenido (texto) queda por encima */
 .hero-content {
     position: relative;
     z-index: 2;
-    /* Por encima de la imagen */
 }
 
-/* Ajusta el tamaño del título para que destaque en full-screen */
+/* TAMAÑO DEL TITULO */
 .hero h1 {
     font-size: 8rem;
-    /* Grande para full-page */
     letter-spacing: 20px;
     margin: 0;
     line-height: 1.1;
@@ -127,7 +114,8 @@ body {
     color: #ffffff
 }
 
-/* GRID DE INTEGRANTES */
+/* ------------------------------------------------------------- */
+/* TARJETAS DE INTEGRANTES */
 .seccion-banda {
     padding: 100px 10%;
 }
@@ -161,6 +149,8 @@ body {
     background-size: cover;
 }
 
+/* ------------------------------------------------------------- */
+/* TARJETAS DE ALBUMES */
 .seccion-discos {
     padding: 80px 10%;
 }
@@ -182,14 +172,12 @@ body {
 .tarjeta-album {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 20px;
-    /* o 24px si quieres más redondeado */
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     transition: all 0.4s ease;
     cursor: pointer;
-
-    /* ← Esto crea espacio alrededor de todo el contenido */
+/* Esto crea espacio alrededor de todo el contenido */
     padding: 12px;
     box-sizing: border-box;
 }
@@ -231,49 +219,39 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
-/* ESTILOS PARA LA EXPANSIÓN */
+/* Ajuste opcional para que no se vea apretado */
 .tarjeta-album {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    max-height: 350px;
-    /* Altura cerrada */
+    padding: 16px;          /* un poco más de espacio interno */
+    min-height: 420px;      /* evita que salten las alturas al cargar */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-/* Cuando la tarjeta tiene la clase 'active' */
-.tarjeta-album.active {
-    max-height: 600px;
-    /* Se expande verticalmente */
-    transform: scale(1.02);
-    cursor: default;
+.info-album {
+    padding: 15px 10px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    opacity: 0.92;               /* un poquito más suave que el resto */
+    transition: opacity 0.3s ease;
 }
 
-.expand-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, opacity 0.5s ease;
-    opacity: 0;
-    padding: 0 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0);
-}
-
-.tarjeta-album.active .expand-content {
-    max-height: 200px;
+.tarjeta-album:hover .info-album {
     opacity: 1;
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cancion-famosa {
-    font-size: 0.9rem;
-    color: #fff;
-    margin-bottom: 15px;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    color: #ddd;
 }
 
 .cancion-famosa span {
     color: var(--cian);
+    font-size: 1.25rem;
+    font-weight: 600;
     display: block;
-    font-size: 1.2rem;
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
 .boton-reproducir {
@@ -358,11 +336,9 @@ body {
     box-shadow: 0 0 35px rgb(0, 68, 106);
 }
 
-
+/* ------------------------------------------------------------- */
 /* GIRAS */
 .seccion-giras {
-    color: white;
-    font-family: "Roboto Condensed", sans-serif;
     padding: 30px 5% 0 5%;
     width: 90%;
     margin: auto;
@@ -370,17 +346,16 @@ body {
 
 .row-gira {
     display: flex;
+    flex-direction: row;
     align-items: stretch;
-    /* Hace que imagen y texto tengan la misma altura */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    justify-content: space-between;
+    gap: 0;
+    border: 3px solid;
+    border-radius: 20px;
     overflow: hidden;
-    padding: 0;
-    margin-bottom: 40px;
-}
-
-/* Clase para invertir el orden en la Temporada 2 */
-.reverse {
-    flex-direction: row-reverse;
+    margin-bottom: 50px;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 .texto-era {
@@ -389,6 +364,23 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+}
+
+.texto-era h2 {
+    color: var(--cian);
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.parrafo-giras {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cccccc;
+    text-align: center;
+    max-width: 80ch;
+    margin: 20px auto 0;
 }
 
 .imagen-giras {
@@ -407,12 +399,9 @@ body {
 /* Contenedor que agrupa las dos fotos */
 .contenedor-imagenes-vertical {
     flex: 0 0 31%;
-    /* Mantiene el ancho que ya tenías */
     display: flex;
     flex-direction: column;
-    /* Las apila una arriba de la otra */
     gap: 0;
-    /* Cambia a 10px si quieres una pequeña separación entre ellas */
 }
 
 /* Estilo para cada imagen individual */
@@ -488,13 +477,7 @@ body {
     border-radius: 15px;
 }
 
-.parrafo-giras {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #cccccc;
-    text-align: justify;
-}
-
+/* ------------------------------------------------------------- */
 /* DATOS CURIOSOS */
 .seccion-curiosidades {
     padding: 100px 10%;
@@ -525,9 +508,7 @@ body {
 .contenedor-trivia {
     display: flex;
     justify-content: center;
-    /* Centra horizontalmente */
     padding: 40px 0;
-    /* Espacio arriba y abajo del botón */
     width: 100%;
 }
 
@@ -552,7 +533,6 @@ body {
     color: var(--fondo);
     box-shadow: 0 0 20px var(--cian);
     transform: translateY(-3px);
-    /* Pequeño salto hacia arriba */
 }
 
 footer {
@@ -616,6 +596,7 @@ footer {
     text-decoration: underline;
 }
 
+/* ------------------------------------------------------------- */
 /* RESPONSIVE DESIGN (PARA TODOS LOS CELULARES) */
 @media screen and (max-width: 768px) {
     .hero-content h1 {
@@ -687,6 +668,16 @@ footer {
         margin-bottom: 50px;
         background: rgba(255, 255, 255, 0.02);
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .tarjeta-album {
+        height: auto !important;
+        min-height: 380px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
     }
 
     .e1-box {

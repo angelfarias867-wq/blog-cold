@@ -1,24 +1,3 @@
-/* FUNCION PARA LA REPRODUCCION DE LAS CANCIONES */ 
-function expandirAlbum(elemento) {
-    // Si ya está activo, no hacemos nada (permitimos que el usuario interactúe)
-    if (elemento.classList.contains('active')) return;
-
-    // Cerramos cualquier otro álbum que esté abierto
-    document.querySelectorAll('.tarjeta-album').forEach(tarjeta => {
-        tarjeta.classList.remove('active');
-        // Opcional: Pausar música de otros álbumes al cerrar
-        const audio = tarjeta.querySelector('audio');
-        if (audio) {
-            audio.pause();
-            const btn = tarjeta.querySelector('.boton-reproducir');
-            if (btn) btn.innerHTML = '<i class="fas fa-play"></i> Reproducir';
-        }
-    });
-
-    // Abrimos el actual
-    elemento.classList.add('active');
-}
-
 function controlarAudio(event, idAudio) {
     event.stopPropagation(); // Evita que el click cierre la tarjeta
     const audio = document.getElementById(idAudio);
@@ -34,3 +13,56 @@ function controlarAudio(event, idAudio) {
         boton.style.background = 'var(--cian)';
     }
 }
+
+let audioReproduciendo = null;
+
+function controlarAudio(event, idAudio) {
+    event.stopPropagation();
+
+    const audioClickeado = document.getElementById(idAudio);
+    const botonClickeado = event.currentTarget;
+
+    document.querySelectorAll('audio').forEach(audio => {
+        if (audio !== audioClickeado) {
+            if (!audio.paused) {
+                audio.pause();
+            }
+            // Resetear botón asociado
+            const boton = document.querySelector(`button[onclick*="controlarAudio(event, '${audio.id}')]`);
+            if (boton) {
+                boton.innerHTML = '<i class="fas fa-play"></i> Reproducir';
+                boton.style.background = 'var(--cian)';
+            }
+        }
+    });
+
+    if (audioClickeado.paused) {
+        audioClickeado.play().catch(err => {
+            console.log("Error al reproducir audio:", err);
+        });
+        botonClickeado.innerHTML = '<i class="fas fa-pause"></i> Pausar';
+        botonClickeado.style.background = 'var(--rosa)';
+        audioReproduciendo = audioClickeado;
+    } else {
+        // Pausar
+        audioClickeado.pause();
+        botonClickeado.innerHTML = '<i class="fas fa-play"></i> Reproducir';
+        botonClickeado.style.background = 'var(--cian)';
+        if (audioReproduciendo === audioClickeado) {
+            audioReproduciendo = null;
+        }
+    }
+}
+
+document.querySelectorAll('audio').forEach(audio => {
+    audio.addEventListener('ended', () => {
+        const boton = document.querySelector(`button[onclick*="controlarAudio(event, '${audio.id}')]`);
+        if (boton) {
+            boton.innerHTML = '<i class="fas fa-play"></i> Reproducir';
+            boton.style.background = 'var(--cian)';
+        }
+        if (audioReproduciendo === audio) {
+            audioReproduciendo = null;
+        }
+    });
+});
