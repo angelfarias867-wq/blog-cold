@@ -504,7 +504,8 @@ body {
     text-shadow: 0 0 5px var(--cian);
 }
 
-/* Contenedor para centrar el botón */
+/* ------------------------------------------------- */
+/* BOTON TRIVIA */
 .contenedor-trivia {
     display: flex;
     justify-content: center;
@@ -534,6 +535,9 @@ body {
     box-shadow: 0 0 20px var(--cian);
     transform: translateY(-3px);
 }
+
+/* ----------------------------------------------------- */
+/* CREDITOS */
 
 footer {
     background-color: #05010a;
@@ -599,6 +603,19 @@ footer {
 /* ------------------------------------------------------------- */
 /* RESPONSIVE DESIGN (PARA TODOS LOS CELULARES) */
 @media screen and (max-width: 768px) {
+    .hero-background {
+        background-attachment: scroll; /* Mejora el rendimiento en móviles */
+        background-size: contain;      /* Hace que la foto se vea COMPLETA */
+        background-position: center top; /* La alinea arriba para que no tape el texto */
+        height: 50vh;                  /* Reduce su altura para que no sea infinita */
+    }
+    
+    .hero {
+        height: auto;
+        min-height: 500px;
+        padding-top: 100px; /* Espacio para que el menú no tape el título */
+    }
+
     .hero-content h1 {
         font-size: 2.5rem;
         letter-spacing: 2px;
