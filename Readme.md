@@ -14,4 +14,4 @@ Adaptable tanto para computadores y celulares
 <img src="img/telefono.jpeg" width="20%">
 
 ## Creador
-Desarrollado por ****Ángel Farías****
+Creado por [**Ángel Farías**](https://github.com/angelfarias867-wq)
