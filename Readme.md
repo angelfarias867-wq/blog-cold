@@ -12,3 +12,6 @@ Adaptable tanto para computadores y celulares
 <br>
 <img src="img/computadora.jpeg" width="70%">
 <img src="img/telefono.jpeg" width="20%">
+
+## Creador
+Desarrollado por ****Ángel Farías****
