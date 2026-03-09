@@ -15,3 +15,5 @@ Adaptable tanto para computadores y celulares
 
 ## Creador
 Creado por [**Ángel Farías**](https://github.com/angelfarias867-wq)
+
+¿Quieres ver el blog? [Presiona Aquí]()
