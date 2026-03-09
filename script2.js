@@ -1,4 +1,4 @@
-// 1. SELECTORES (Captura de elementos HTML)
+// SELECTORES (Captura de elementos HTML)
 const h3Preguntas = document.querySelectorAll('h3');
 const botonesOpcion = document.querySelectorAll('.btn-opcion');
 const btnFinalizar = document.getElementById('btn-finalizar');
@@ -6,10 +6,10 @@ const pantallaRes = document.getElementById('pantalla-resultado');
 const textoRes = document.getElementById('texto-resultado');
 const todasLasPreguntas = document.querySelectorAll('.opciones');
 
-// 2. VARIABLES (Estado de la aplicación)
+// VARIABLES (Estado de la aplicación)
 let aciertos = 0;
 
-// 3. FUNCIONES (La lógica de las acciones)
+// FUNCIONES (La lógica de las acciones)
 
 // Función para darle estilo visual a las preguntas al cargar
 function EstiloPreguntas() {
@@ -55,7 +55,7 @@ function mostrarResultadoFinal() {
     pantallaRes.classList.remove('hidden');
 }
 
-// 4. LLAMADO A LAS FUNCIONES
+// LLAMADO A LAS FUNCIONES
 
 // Ejecutar estilos iniciales
 EstiloPreguntas();
