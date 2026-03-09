@@ -9,5 +9,5 @@ Un Blog sobre la banda británica *Coldplay* en el cual se muestra sus integrant
 
 ## Responsive
 Adaptable tanto para computadores y celulares 
-<img src="">
-<img src="">
+<img src="computadora.jpeg">
+<img src="telefono.jpeg">
