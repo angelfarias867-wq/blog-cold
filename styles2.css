@@ -84,6 +84,8 @@ h3 {
     margin: 30px auto;
 }
 
+/* ---------------------------------------------------------- */
+/* BOTONES */
 .btn-opcion {
     background: rgba(0, 212, 255, 0.08);
     border: 2px solid var(--cian);
@@ -112,6 +114,8 @@ h3 {
     outline: none;
 }
 
+/* ---------------------------------------------------------- */
+/* BOTON DE VER RESULTADO */
 #btn-finalizar {
     display: block;
     margin: 50px auto;
@@ -132,6 +136,8 @@ h3 {
     box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
 }
 
+/* ---------------------------------------------------------- */
+/* PANTALLAZO FINAL */
 #pantalla-resultado {
     position: fixed;
     top: 0;
@@ -202,6 +208,8 @@ h3 {
     display: none !important;
 }
 
+/* ---------------------------------------------------------- */
+/* CREDITOS */
 footer {
     background-color: #03010a;
     padding: 30px 5%;
@@ -263,6 +271,7 @@ footer {
     text-decoration: underline;
 }
 
+/* EFECTOS DE RESPLANDOR */
 @keyframes glow {
     from {
         text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
@@ -285,29 +294,26 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-    /* 1. Alineamos el contenedor principal en vertical */
     .footer-container {
-        flex-direction: column; /* Apila redes sociales sobre créditos */
-        gap: 25px;              /* Espacio entre los dos bloques */
+        flex-direction: column;
+        gap: 25px;
         text-align: center;
     }
 
-    /* 2. Ajustamos los créditos para que no se amontonen */
     .footer-credits {
         display: flex;
-        flex-direction: column; /* Un párrafo sobre el otro */
-        gap: 12px;              /* Espacio entre líneas de texto */
+        flex-direction: column;
+        gap: 12px; 
         width: 100%;
     }
 
-    /* 3. Estilo para los enlaces (AQUÍ y Ángel Farías) */
     .footer-credits p {
-        font-size: 0.95rem;     /* Tamaño cómodo para lectura en móvil */
+        font-size: 0.95rem;
         line-height: 1.5;
     }
 
     .spans a {
-        display: inline-block;  /* Evita que los enlaces se corten */
+        display: inline-block;
         padding: 2px 5px;
     }
 }

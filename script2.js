@@ -1,65 +1,71 @@
-const preguntas = document.querySelectorAll('h3');
-
-document.querySelectorAll('h3').forEach(pregunta => {
-    pregunta.classList.add('cyan');
-});
-
-// Seleccionamos todos los botones de opciones
-const botones = document.querySelectorAll('.btn-opcion');
-
-botones.forEach(boton => {
-    boton.addEventListener('click', function () {
-        const contenedor = this.parentElement;
-
-        contenedor.querySelectorAll('.btn-opcion').forEach(btn => {
-            btn.classList.remove('seleccionado');
-        });
-
-        this.classList.add('seleccionado');
-
-        const respuestaCorrecta = contenedor.getAttribute('data-correct');
-        if (this.innerText === respuestaCorrecta) {
-            console.log("¡Correcto!");
-        }
-    });
-});
-
-// 1. SELECTORES: Guardamos los elementos que vamos a usar
+// 1. SELECTORES (Captura de elementos HTML)
+const h3Preguntas = document.querySelectorAll('h3');
 const botonesOpcion = document.querySelectorAll('.btn-opcion');
 const btnFinalizar = document.getElementById('btn-finalizar');
 const pantallaRes = document.getElementById('pantalla-resultado');
 const textoRes = document.getElementById('texto-resultado');
+const todasLasPreguntas = document.querySelectorAll('.opciones');
 
-// 2. LOGICA PARA SELECCIONAR OPCIONES
-botonesOpcion.forEach(boton => {
-    boton.addEventListener('click', function() {
-        // Buscamos el grupo de esta pregunta
-        const grupo = this.parentElement;
+// 2. VARIABLES (Estado de la aplicación)
+let aciertos = 0;
 
-        // Quitamos la marca a los demás botones del mismo grupo
-        grupo.querySelectorAll('.btn-opcion').forEach(b => b.classList.remove('seleccionado'));
+// 3. FUNCIONES (La lógica de las acciones)
 
-        // Marcamos el botón que tocamos
-        this.classList.add('seleccionado');
+// Función para darle estilo visual a las preguntas al cargar
+function EstiloPreguntas() {
+    h3Preguntas.forEach(pregunta => {
+        pregunta.classList.add('cyan');
     });
-});
+}
 
-// 3. LOGICA PARA FINALIZAR Y MOSTRAR RESULTADO
-btnFinalizar.addEventListener('click', () => {
-    let aciertos = 0;
-    const preguntas = document.querySelectorAll('.opciones');
+// Función para manejar la selección de una respuesta
+function seleccionarOpcion(botonClickeado) {
+    const contenedor = botonClickeado.parentElement;
 
-    preguntas.forEach(pregunta => {
+    // Limpiar selección previa en ese grupo
+    contenedor.querySelectorAll('.btn-opcion').forEach(btn => {
+        btn.classList.remove('seleccionado');
+    });
+
+    // Marcar la nueva opción
+    botonClickeado.classList.add('seleccionado');
+
+    // Feedback inmediato en consola (Opcional)
+    const respuestaCorrecta = contenedor.getAttribute('data-correct');
+    if (botonClickeado.innerText === respuestaCorrecta) {
+        console.log("¡Correcto!");
+    }
+}
+
+// Función para calcular el puntaje y mostrar el cuadro final
+function mostrarResultadoFinal() {
+    aciertos = 0; // Reiniciamos el contador antes de calcular
+
+    todasLasPreguntas.forEach(pregunta => {
         const correcta = pregunta.getAttribute('data-correct');
         const elegida = pregunta.querySelector('.btn-opcion.seleccionado');
 
-        // Si elegiste la opción que coincide con la respuesta correcta
         if (elegida && elegida.innerText === correcta) {
             aciertos++;
         }
     });
 
-    // Mostramos el anuncio central
-    textoRes.innerText = `Lograste ${aciertos} de ${preguntas.length} puntos`;
+    // Escribir el texto y mostrar la pantalla central
+    textoRes.innerText = `Lograste ${aciertos} de ${todasLasPreguntas.length} puntos`;
     pantallaRes.classList.remove('hidden');
+}
+
+// 4. LLAMADO A LAS FUNCIONES
+
+// Ejecutar estilos iniciales
+EstiloPreguntas();
+
+// Eventos para los botones de las opciones
+botonesOpcion.forEach(boton => {
+    boton.addEventListener('click', function() {
+        seleccionarOpcion(this);
+    });
 });
+
+// Evento para el botón de finalizar
+btnFinalizar.addEventListener('click', mostrarResultadoFinal);
