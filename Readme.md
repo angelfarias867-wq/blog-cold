@@ -1,6 +1,6 @@
 # Blog *Coldplay*🎤🎸
 ## Introducción
-Un Blog sobre la banda británica *Coldplay* en el cual se muestra sus integrantes, sus albumes juntos con los exitos de cada album, y sus giras desde sus inicios, ademas teniendo algunos datos curiosos, una trivia interactiva
+Un Blog sobre la banda británica *Coldplay* en el cual se muestra sus integrantes, sus albumes juntos con los exitos de cada album, información de todas sus giras, algunos datos curiosos, y ademas siendo interactiva mediante una trivia y 
 
 ## Tecnologias Implementadas
 #### HTML: Estructura del blog (Definicion de los botones)
