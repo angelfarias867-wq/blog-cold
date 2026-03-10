@@ -10,8 +10,7 @@ const todasLasPreguntas = document.querySelectorAll('.opciones');
 let aciertos = 0;
 
 // FUNCIONES (La lógica de las acciones)
-
-// Función para darle estilo visual a las preguntas al cargar
+// Función para darle estilo a las preguntas
 const EstiloPreguntas = () => {
     h3Preguntas.forEach(pregunta => {
         pregunta.classList.add('cyan');
@@ -20,16 +19,9 @@ const EstiloPreguntas = () => {
 
 // Función para manejar la selección de una respuesta
 const seleccionarOpcion = (botonClickeado) => {
-    // Busca al "padre" (el div contenedor) del botón
     const contenedor = botonClickeado.parentElement; // se usa parentElement para subir de nivel
-
-    // Limpia la clase 'seleccionado' de los otros botones en este grupo
     contenedor.querySelectorAll('.btn-opcion').forEach(btn => btn.classList.remove('seleccionado'));
-
-    // Marca el botón que recibió el clic
     botonClickeado.classList.add('seleccionado');
-
-    // Comprueba si es la respuesta correcta leyendo el atributo del padre
     const respuestaCorrecta = contenedor.getAttribute('data-correct');
     
     if (botonClickeado.innerText === respuestaCorrecta) {
@@ -38,22 +30,21 @@ const seleccionarOpcion = (botonClickeado) => {
 };
 
 // Función para calcular el puntaje y mostrar el cuadro final
-function mostrarResultadoFinal() {
-    aciertos = 0; // Reiniciamos el contador antes de calcular
-
+const mostrarResultadoFinal = () => {
+    aciertos = 0; 
     todasLasPreguntas.forEach(pregunta => {
         const correcta = pregunta.getAttribute('data-correct');
-        const elegida = pregunta.querySelector('.btn-opcion.seleccionado');
+        const elegida = pregunta.querySelector('.btn-opcion.seleccionado');//se busca el boton seleccionado
 
         if (elegida && elegida.innerText === correcta) {
-            aciertos++;
-        }  //se compara las respuestas elegidas con las respuestas correctas
+            aciertos++; // se compara las respuestas elegidas con las respuestas correctas
+        }
     });
 
-    // Escribir el texto y mostrar la pantalla central
-    textoRes.innerText = `Lograste ${aciertos} de ${todasLasPreguntas.length} puntos`;
-    pantallaRes.classList.remove('hidden'); //se quita el atributo que mantenia oculto el modal
-}
+    // se muestra el total de aciertos en el texto del resultado
+    textoRes.innerText = `Lograste ${aciertos} de ${todasLasPreguntas.length} puntos`; 
+    pantallaRes.classList.remove('hidden'); // se hace visible el cuadro de resultados quitando la clase 'hidden'
+};
 
 // LLAMADO A LAS FUNCIONES
 
@@ -63,7 +54,7 @@ EstiloPreguntas();
 // Eventos para los botones de las opciones
 botonesOpcion.forEach(boton => {
     boton.addEventListener('click', function() {
-        seleccionarOpcion(this); //
+        seleccionarOpcion(this); //se usa this para señalar cual fue el boton seleccionado
     });
 });
 
