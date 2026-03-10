@@ -12,30 +12,30 @@ let aciertos = 0;
 // FUNCIONES (La lógica de las acciones)
 
 // Función para darle estilo visual a las preguntas al cargar
-function EstiloPreguntas() {
+const EstiloPreguntas = () => {
     h3Preguntas.forEach(pregunta => {
         pregunta.classList.add('cyan');
     });
-}
+};
 
 // Función para manejar la selección de una respuesta
-function seleccionarOpcion(botonClickeado) {
-    const contenedor = botonClickeado.parentElement;
+const seleccionarOpcion = (botonClickeado) => {
+    // Busca al "padre" (el div contenedor) del botón
+    const contenedor = botonClickeado.parentElement; // se usa parentElement para subir de nivel
 
-    // Limpiar selección previa en ese grupo
-    contenedor.querySelectorAll('.btn-opcion').forEach(btn => {
-        btn.classList.remove('seleccionado');
-    });
+    // Limpia la clase 'seleccionado' de los otros botones en este grupo
+    contenedor.querySelectorAll('.btn-opcion').forEach(btn => btn.classList.remove('seleccionado'));
 
-    // Marcar la nueva opción
+    // Marca el botón que recibió el clic
     botonClickeado.classList.add('seleccionado');
 
-    // Feedback inmediato en consola (Opcional)
+    // Comprueba si es la respuesta correcta leyendo el atributo del padre
     const respuestaCorrecta = contenedor.getAttribute('data-correct');
+    
     if (botonClickeado.innerText === respuestaCorrecta) {
         console.log("¡Correcto!");
     }
-}
+};
 
 // Función para calcular el puntaje y mostrar el cuadro final
 function mostrarResultadoFinal() {
@@ -47,12 +47,12 @@ function mostrarResultadoFinal() {
 
         if (elegida && elegida.innerText === correcta) {
             aciertos++;
-        }
+        }  //se compara las respuestas elegidas con las respuestas correctas
     });
 
     // Escribir el texto y mostrar la pantalla central
     textoRes.innerText = `Lograste ${aciertos} de ${todasLasPreguntas.length} puntos`;
-    pantallaRes.classList.remove('hidden');
+    pantallaRes.classList.remove('hidden'); //se quita el atributo que mantenia oculto el modal
 }
 
 // LLAMADO A LAS FUNCIONES
@@ -63,7 +63,7 @@ EstiloPreguntas();
 // Eventos para los botones de las opciones
 botonesOpcion.forEach(boton => {
     boton.addEventListener('click', function() {
-        seleccionarOpcion(this);
+        seleccionarOpcion(this); //
     });
 });
 
