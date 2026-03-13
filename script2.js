@@ -19,9 +19,7 @@ const EstiloPreguntas = () => {
 
 // Función para manejar la selección de una respuesta
 const seleccionarOpcion = (botonClickeado) => {
-    const contenedor = botonClickeado.parentElement; // se usa parentElement para subir de nivel
-    contenedor.querySelectorAll('.btn-opcion').forEach(btn => btn.classList.remove('seleccionado'));
-    botonClickeado.classList.add('seleccionado');
+    botonClickeado.classList.add('seleccionado'); //revisar si es innecesaria
     const respuestaCorrecta = contenedor.getAttribute('data-correct');
     
     if (botonClickeado.innerText === respuestaCorrecta) {
@@ -36,7 +34,7 @@ const mostrarResultadoFinal = () => {
         const correcta = pregunta.getAttribute('data-correct');
         const elegida = pregunta.querySelector('.btn-opcion.seleccionado');//se busca el boton seleccionado
 
-        if (elegida && elegida.innerText === correcta) {
+        if (elegida.innerText === correcta) {
             aciertos++; // se compara las respuestas elegidas con las respuestas correctas
         }
     });
