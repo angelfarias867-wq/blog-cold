@@ -19,8 +19,9 @@ const EstiloPreguntas = () => {
 
 // Función para manejar la selección de una respuesta
 const seleccionarOpcion = (botonClickeado) => {
-    botonClickeado.classList.add('seleccionado'); //revisar si es innecesaria
+    botonClickeado.classList.add('seleccionado'); 
     const respuestaCorrecta = contenedor.getAttribute('data-correct');
+    console.log(respuestaCorrecta);
     
     if (botonClickeado.innerText === respuestaCorrecta) {
         console.log("¡Correcto!");
@@ -32,10 +33,13 @@ const mostrarResultadoFinal = () => {
     aciertos = 0; 
     todasLasPreguntas.forEach(pregunta => {
         const correcta = pregunta.getAttribute('data-correct');
-        const elegida = pregunta.querySelector('.btn-opcion.seleccionado');//se busca el boton seleccionado
+        const elegida = pregunta.querySelector('.btn-opcion.seleccionado');
+        console.log(elegida);
+
 
         if (elegida.innerText === correcta) {
             aciertos++; // se compara las respuestas elegidas con las respuestas correctas
+            console.log(aciertos);
         }
     });
 
@@ -53,6 +57,7 @@ EstiloPreguntas();
 botonesOpcion.forEach(boton => {
     boton.addEventListener('click', function() {
         seleccionarOpcion(this); //se usa this para señalar cual fue el boton seleccionado
+        console.log(this);
     });
 });
 
